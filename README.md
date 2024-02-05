@@ -3,8 +3,8 @@ HELP NEEDED
 doublewidth is a simple C++ program using libTIFF to copy 2 times horizontally a Deflate compressed TIFF,
 with 1 row per strip.
 
-I understand that there should be a way to avoid decompression (2 times) and recompressions since we
-know by advance the uncompressed size (width of the image).
+I understand that there should be a way to avoid decompression (2 times) and recompression for all output width since we
+know by advance the uncompressed size (width of the image x bytes per pixel).
 This would allow to compute a rolling adler32 checksum and concatenate compressed zip streams for a given strip, thus preventing decompressing / recompressing.
 I tried many things, with input from Mark Adler himself (https://stackoverflow.com/questions/14744692/concatenate-multiple-zlib-compressed-data-streams-into-a-single-stream-efficient)
 
