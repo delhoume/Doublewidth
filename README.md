@@ -1,6 +1,6 @@
 HELP NEEDED
 
-Here is a simple C++ program using libTIFF to copy 2 times horizontally a Deflate compressed TIFF,
+doublewidth is a simple C++ program using libTIFF to copy 2 times horizontally a Deflate compressed TIFF,
 with 1 row per strip.
 
 I understand that there should be a way to avoid decompression (2 times) and recompressions since we
