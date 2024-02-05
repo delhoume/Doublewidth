@@ -16,12 +16,12 @@ write the rawstrip
 
 it does not not work, the two input streams (that are identical but can be different if input images were different - I simplified the code) are correct, 
 infgen gives a result, decode to normal output, but I CANNOT COMBINE THEM, either the adler32 values are bad because of indianness, or I messed up with pointer arithmetic, 
-or I am dumb or whatever...
+or I am dumb most likely) or whatever...
 The combined compressed output has always infgen give an error and  output TIFF is unreadable
 
 The code compiles on a Mac M1, with g++13, needs libtiff zlib lib(turbo)jpeg and liblzma, all installed using brew
 
-My use case is building a Mars image from  a mosaic of 90x44 images (47420x47420 1 byte pixels each) !
+My use case is building a Mars image from  a mosaic of 90x44 images (47420x47420 1 byte per pixel each) !
 
 https://murray-lab.caltech.edu/CTX/V01/tiles/
 
@@ -32,6 +32,7 @@ While I have working code to do this, it takes about 6 days for the whole image 
 The image after this step is about 5.5 terabytes with default deflate compression.
 
 Then I process it again to create a pyramidal TIFF than can be interactively displayed with my TIFF specialized Windows viewer https://github.com/delhoume/vliv 
+Final image is JPEG compressed to save disk space.
 
 Thanks
 
