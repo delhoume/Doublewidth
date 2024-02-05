@@ -3,6 +3,8 @@
 #include <string>
 #include <cstring>
 #include <iomanip>
+#include <sstream>
+
 
 using namespace std;
 
@@ -71,6 +73,13 @@ TIFFSetField(tifout, TIFFTAG_ZIPQUALITY, 6);
       size_t readBytes1 = TIFFReadRawStrip(tifin, y, rawdata1, insize);
       size_t readBytes2 = TIFFReadRawStrip(tifin, y, rawdata2, insize);
 
+      if (y == 0) { // save first stream
+            std::stringstream filename; filename << "raw_" << y << ".zst";
+            ofstream output(filename.str(), std::ios::binary);
+            output.write((const char*)rawdata1, readBytes1);
+            output.close();
+        }
+
       if (MAGIC) {
           // HERE SOME MAGIC WITH ZLIB PLEASE TO FILL THE RAW OUTPUT BUFFER FROM RAW INPUTS
           size_t outBytes = 0;
@@ -79,7 +88,7 @@ TIFFSetField(tifout, TIFFTAG_ZIPQUALITY, 6);
           // decodes 2 times, encode once
           TIFFReadFromUserBuffer(tifin, 0, rawdata1, readBytes1, outdata, insize);
           TIFFReadFromUserBuffer(tifin, 0, rawdata2, readBytes2, outdata + insize, insize);
-           TIFFWriteEncodedStrip(tifout, y, outdata, outsize);
+          TIFFWriteEncodedStrip(tifout, y, outdata, outsize);
       }
   }
   TIFFClose(tifin);

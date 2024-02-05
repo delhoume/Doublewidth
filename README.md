@@ -34,5 +34,9 @@ The image after this step is about 5.5 terabytes with default deflate compressio
 Then I process it again to create a pyramidal TIFF than can be interactively displayed with my TIFF specialized Windows viewer https://github.com/delhoume/vliv 
 Final image is JPEG compressed to save disk space.
 
+cassini_paris.tif is an 512x326 3 bytes/pixel Deflate compressed 1 row per strip image
+raw_0.zst is output from first strip compressed contents, decompressed length is 512 * 3 = 1536 bytes
+double_0.zts is output from first strip of doubled paris_cassini.tif, decompressed length is 1024 * 3 = 3072 (obtained by doubling previous result of doubling)
+
 Thanks
 
