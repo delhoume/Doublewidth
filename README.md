@@ -38,7 +38,10 @@ Final image is JPEG compressed to save disk space.
   - raw_0.zst is output from first strip compressed contents, decompressed length is 512 * 3 = 1536 bytes (you can run infgen on it)
   - double_0.zst is output from first strip of doubled cassini_paris.tif, decompressed length is 1024 * 3 = 3072 (obtained by doubling previous result of doubling)
 
-The challenge is creating a Deflate stream that is a valid concatenation raw_0.zst and raw_0.zst without decompressing it (more then once) or compressing,
+You can convert .zst to PNGs if you now the output width and bytes oper pixel using zsttopng(.cpp) 
+
+The challenge is creating a Deflate stream that is a valid concatenation raw_0.zst and raw_0.zst without decompressing it (more then once) or compressing.
+
 
 Thanks
 
