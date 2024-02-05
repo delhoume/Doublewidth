@@ -11,7 +11,7 @@ I tried many things, with input from Mark Adler himself (https://stackoverflow.c
 My latest attempt was copying the first image uncompressed stream verbatim except for last 4 bytes (checksum)
 copy the second stream from offset 2 (no header) to size - 6 (no checksum)
 combine the two checksum with adler32_combine(adler1, adler2, imagewidth * sampleperpixel);  (the number of decoded bytes), 
-add an empty block, the the rollinig checksum, as it is described in Stack Overflow. 
+add an empty block, the the rolling checksum, as it is described in Stack Overflow. 
 write the rawstrip
 
 it does not not work, the two input streams (that are identical but can be different if input images were different - I simplified the code) are correct, 
@@ -38,9 +38,9 @@ Final image is JPEG compressed to save disk space.
   - raw_0.zst is output from first strip compressed contents, decompressed length is 512 * 3 = 1536 bytes (you can run infgen on it)
   - double_0.zst is output from first strip of doubled cassini_paris.tif, decompressed length is 1024 * 3 = 3072 (obtained by doubling previous result of doubling)
 
-You can convert .zst to PNGs if you now the output width and bytes oper pixel using zsttopng(.cpp) 
+You can convert .zst to PNGs if you know the output width and bytes per pixel using zsttopng(.cpp) 
 
-The challenge is creating a Deflate stream that is a valid concatenation raw_0.zst and raw_0.zst without decompressing it (more then once) or compressing.
+The challenge is creating a Deflate stream that is a valid concatenation of raw_0.zst and raw_0.zst without decompressing it (more than once) and compressing.
 
 
 Thanks
