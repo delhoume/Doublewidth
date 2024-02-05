@@ -36,7 +36,9 @@ Final image is JPEG compressed to save disk space.
 
   - cassini_paris.tif is an 512x326 3 bytes/pixel Deflate compressed 1 row per strip image
   - raw_0.zst is output from first strip compressed contents, decompressed length is 512 * 3 = 1536 bytes (you can run infgen on it)
-  - double_0.zst is output from first strip of doubled paris_cassini.tif, decompressed length is 1024 * 3 = 3072 (obtained by doubling previous result of doubling)
+  - double_0.zst is output from first strip of doubled cassini_paris.tif, decompressed length is 1024 * 3 = 3072 (obtained by doubling previous result of doubling)
+
+The challenge is creating a Deflate stream that is a valid concatenation raw_0.zst and raw_0.zst without decompressing it (more then once) or compressing,
 
 Thanks
 
